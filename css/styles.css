@@ -1,0 +1,146 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    }
+
+.wrapper {
+    max-width: 100%;
+    width: 980px;
+    margin: 0 auto;
+    display: flex;
+}
+
+
+#colorChangingText {
+    font-size: 2.5em;
+    color: chartreuse; /* Start with chartreuse */
+    font-family: "Montserrat", sans-serif;
+}
+
+h3, p {
+    font-family: 'DM sans', sans-serif;
+}
+
+h1 {
+    padding-bottom: 1.5em;
+    padding-top: 1.5em;
+}
+
+h3, p {
+    font-size: 1em;
+}
+
+p {
+    padding-bottom: 1.5em;
+}
+
+/* 1:1 BOXES */
+/* //////////////////////////////////////////////////////////////////// */
+
+.logo-box {
+    flex: 1;
+}
+
+.logo {
+    width: 100%;
+}
+
+.word-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    margin-right: 80px;
+}
+
+.icons {
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+    font-size: 3em;
+    margin-bottom: 1.5em;
+}
+
+a {
+    color: black;
+}
+
+a:hover {
+    color: rgb(76, 102, 234);
+}
+
+
+/* GOOGLE FONTS */
+/* //////////////////////////////////////////////////////////////////// */
+
+/* <uniquifier>: Use a unique and descriptive class name */
+/* <weight>: Use a value from 100 to 1000 */
+
+.dm-sans-font {
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* <uniquifier>: Use a unique and descriptive class name */
+/* <weight>: Use a value from 100 to 900 */
+
+.montserrat-font {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+
+/* MOBILE */
+/* //////////////////////////////////////////////////////////////////// */
+
+@media screen and (max-width: 700px) {
+
+    .wrapper {
+        flex-direction: column;
+    }
+
+    h3, p {
+        font-size: 1.5em;
+    }
+
+    .logo-box {
+        display: flex;
+        justify-content: center;
+    }
+
+    .logo {
+        width: 50%;
+    }
+
+    .word-box {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin: 0 50px 0 50px;
+    }
+
+    .icons {
+        display: flex;
+        justify-content: space-around;
+        width: 80%;
+        font-size: 3.5em;
+    }
+
+}
+
+@media screen and (max-width: 390px) {
+
+    p {
+        font-size: 1em;
+    }
+
+}

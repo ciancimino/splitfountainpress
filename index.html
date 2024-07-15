@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <title>Split Fountain Press</title>
+
+    <script src="https://kit.fontawesome.com/a436fe4a8a.js" crossorigin="anonymous"></script>
+
+    
+
+</head>
+<body>
+
+    <div class="wrapper">
+
+        <div class="logo-box">
+
+            <img class="logo" src="images/logo.png">
+
+        </div>
+        <!-- end logobox -->
+
+        <div class="word-box">
+
+            <h1 id="colorChangingText">Things are changing around here!</h1>
+
+            <h3>We're building something new...</h3>
+
+            <p>In the meantime, follow us <br> or send us an email</p>
+
+                <div class="icons">
+
+                    <a href="https://www.instagram.com/splitfountainpress/" class="icon" target="_blank"><i class="fab fa-instagram"></i></a>
+
+                    <a href="mailto:splitfountainpress@gmail.com" class="icon"><i class="far fa-envelope"></i></a>
+
+                </div>
+                  <!-- end icons -->
+
+        </div>
+        <!-- end wordbox -->
+
+    </div>
+    <!-- end wrapper -->
+
+
+
+    <script>
+        // Function to convert a number to a 2-digit hexadecimal string
+        function toHex(number) {
+            return number.toString(16).padStart(2, '0');
+        }
+
+        // Function to calculate the interpolated color between two colors
+        function interpolateColor(color1, color2, factor) {
+            let result = color1.slice();
+            for (let i = 0; i < 3; i++) {
+                result[i] = Math.round(result[i] + factor * (color2[i] - color1[i]));
+            }
+            return result;
+        }
+
+        // Function to convert a color array to a hex string
+        function colorArrayToHex(colorArray) {
+            return `#${toHex(colorArray[0])}${toHex(colorArray[1])}${toHex(colorArray[2])}`;
+        }
+
+        // Function to update the text color
+        function updateColor() {
+            const colors = [
+                [127, 255, 0],   // Chartreuse
+                [238, 130, 238], // Violet
+                [128, 0, 32],    // Burgundy
+                [0, 0, 139],     // Deep Blue
+                [255, 105, 180], // Pink
+                [0, 128, 0],     // Green
+                [127, 255, 0]    // Chartreuse again to ensure smooth transition
+            ];
+
+            const duration = 15000; // 15 seconds
+            const interval = 100; // Update every 100ms
+            const totalSteps = duration / interval;
+            const stepsPerColor = totalSteps / (colors.length - 1);
+
+            let startTime = new Date().getTime();
+
+            const intervalId = setInterval(() => {
+                let currentTime = new Date().getTime();
+                let elapsed = currentTime - startTime;
+
+                if (elapsed >= duration) {
+                    startTime = new Date().getTime(); // Reset start time
+                    elapsed = 0;
+                }
+
+                let step = elapsed / interval;
+                let currentColorIndex = Math.floor(step / stepsPerColor);
+                let nextColorIndex = (currentColorIndex + 1) % colors.length; // Use modulo to cycle back
+
+                let localStep = step % stepsPerColor;
+                let factor = localStep / stepsPerColor;
+                let currentColor = interpolateColor(colors[currentColorIndex], colors[nextColorIndex], factor);
+
+                let hexColor = colorArrayToHex(currentColor);
+                document.getElementById('colorChangingText').style.color = hexColor;
+            }, interval);
+        }
+
+        // Start updating the color when the page loads
+        window.onload = updateColor;
+    </script>
+
+</body>
+</html>
